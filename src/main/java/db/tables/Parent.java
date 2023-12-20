@@ -36,6 +36,10 @@ public class Parent {
         this.pass = pass;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
     public String getMiddleName() {
         return middleName;
     }

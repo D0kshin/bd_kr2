@@ -11,6 +11,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="student_id")
     private int id;
+    @Column(name="class_id")
+    private int classId;
     @Column(nullable=false)
     private String name;
     @Column(nullable=false)
@@ -25,8 +27,8 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="student_parent",
-            joinColumns = { @JoinColumn(name="student_id")},
-            inverseJoinColumns = { @JoinColumn(name="parent_id") }
+            joinColumns = { @JoinColumn(name="studentId")},
+            inverseJoinColumns = { @JoinColumn(name="parentId") }
     )
     public Set<Parent> parents = new HashSet<>();
 
@@ -50,6 +52,10 @@ public class Student {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getPass() {
+        return pass;
     }
 
     public String getClassName() {

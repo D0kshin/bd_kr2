@@ -46,6 +46,11 @@ public class Teacher {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    public String getPass() {
+        return pass;
+    }
+
     public void appointHeadTeacher(){
         this.headTeacher = true;
     }

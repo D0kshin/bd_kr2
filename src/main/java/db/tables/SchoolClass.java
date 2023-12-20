@@ -14,11 +14,15 @@ public class SchoolClass {
     @Column(nullable=false)
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "classId")
+    private Set<Student> students = new HashSet<Student>();
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="class_subject",
-            joinColumns = { @JoinColumn(name="class_id")},
-            inverseJoinColumns = { @JoinColumn(name="subject_id") }
+            joinColumns = { @JoinColumn(name="classId")},
+            inverseJoinColumns = { @JoinColumn(name="subjectId") }
     )
     public Set<SchoolSubject> classSchoolSubjects = new HashSet<>();
 

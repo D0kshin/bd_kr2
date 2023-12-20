@@ -303,6 +303,16 @@ public class SchoolDB {
         return queryList;
     }
 
+    public Grade getGradesById(Integer gradeId){
+        Session session = openSession();
+        session.getTransaction().begin();
+
+        Grade grade = session.get(Grade.class, gradeId);
+        session.getTransaction().commit();
+
+        return grade;
+    }
+
     public List<Teacher> getTeachersBySubject(Integer subjectId){
         Session session = openSession();
         session.getTransaction().begin();
@@ -331,6 +341,49 @@ public class SchoolDB {
         });
         session.getTransaction().commit();
         return resultStudentList;
+    }
+
+    public void deleteGrade(Integer gradeId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        Grade grade = session.get(Grade.class, gradeId);
+        session.delete(grade);
+        session.getTransaction().commit();
+    }
+    public void deleteTeacher(Integer teacherId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        Teacher teacher = session.get(Teacher.class, teacherId);
+        session.delete(teacher);
+        session.getTransaction().commit();
+    }
+    public void deleteParent(Integer parentId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        Parent parent = session.get(Parent.class, parentId);
+        session.delete(parent);
+        session.getTransaction().commit();
+    }
+    public void deleteStudent(Integer studentId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        Student student = session.get(Student.class, studentId);
+        session.delete(student);
+        session.getTransaction().commit();
+    }
+    public void deleteSubject(Integer subjectId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        Subject subject = session.get(Subject.class, subjectId);
+        session.delete(subject);
+        session.getTransaction().commit();
+    }
+    public void deleteClass(Integer classId){
+        Session session = openSession();
+        session.getTransaction().begin();
+        SchoolClass schoolClass = session.get(SchoolClass.class, classId);
+        session.delete(schoolClass);
+        session.getTransaction().commit();
     }
 
 }

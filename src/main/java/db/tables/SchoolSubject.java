@@ -9,13 +9,13 @@ import java.util.Set;
 public class SchoolSubject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="subject_id")
+    @Column(name="subjectId")
     private int id;
     @Column(nullable=false)
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "subject_id")
+    @JoinColumn(name = "subjectId")
     private Grade grade;
 
     @ManyToMany(mappedBy = "teacherSchoolSubjects")
